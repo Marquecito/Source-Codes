@@ -4,34 +4,53 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Activity1
+namespace Assignment1
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Player1 p1 = new Player1("Marc", "Male", 19, "Nyoging Esports", "VALORANT");
-        
-            p1.introduction();
+            Console.Write("Enter the number of students: ");
 
-            Console.WriteLine("\n");
+            int limitOfArray = Convert.ToInt32(Console.ReadLine());
 
-            Status p2 = new Status("Stina", "Female", 18, "Nyoging Esports", "ROBLOX");
-         
-            p2.introduction();
-            p2.StatusInGame();
+            Console.WriteLine("");
+            Console.WriteLine("Enter the credentials of the students: ");
+            Console.WriteLine("");
 
-            Console.WriteLine("\n");
+            var studentCredentials = new StudentCredentials[limitOfArray];
+            foreach (int i in Enumerable.Range(0, limitOfArray))
+            {
+               
+                Console.WriteLine($"Student # {i + 1}");
+                Console.WriteLine("");
+                Console.Write("First Name: ");
+                var firstName = Console.ReadLine();
+                Console.Write("Last Name: ");
+                var lastName = Console.ReadLine();
+                Console.Write("Year Level: ");
+                var yearLvl = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Course or Program: ");
+                var course = Console.ReadLine();
+                Console.Write("Section: ");
+                var section = Console.ReadLine();
 
-            Rank p3 = new Rank("Jio", "Male", 20, "Nyoging Gaming", "ART");
-            p3.introduction();
-            p3.StatusInGame();
-            p3.theRank();
+                studentCredentials[i] = new StudentCredentials(firstName, lastName, yearLvl, course, section);
+                Console.WriteLine();
+            }
 
-            Console.WriteLine("\n\nPress ENTER to exit");
-            Console.ReadLine();
+            Console.WriteLine("");
+            Console.WriteLine("Students Entered: ");
+            Console.WriteLine("");
 
+            for (int i = 0; i < studentCredentials.Length; i++)
+            {
+                Console.WriteLine("");
+                Console.WriteLine($"Student # {i + 1}");
+                studentCredentials[i].displayCredentials();
+                Console.WriteLine("");
 
+            }
         }
     }
 }
